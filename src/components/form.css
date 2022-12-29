@@ -1,12 +1,13 @@
 .form-container{
     background-color: black;
-    width: 35rem;
-    height: 25rem;
+    min-width: 35rem;
+    min-height: 25rem;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     border-radius: 10px;
+    padding: 2rem;
 }
 
 .form-container h1{
@@ -32,4 +33,11 @@
     background-color: green;
     color: white;
     cursor: pointer;
+}
+
+.error{
+    padding: 1rem;
+    background-color: red;
+    color: white;
+    border-radius: 5px;
 }
