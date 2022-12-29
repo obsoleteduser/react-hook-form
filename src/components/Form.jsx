@@ -6,8 +6,8 @@ import * as yup from 'yup'
 
 const schema = yup.object().shape({
     productName: yup.string().required("Product name can't be empty"),
-    unitPrice: yup.number().positive().required(),
-    unitsInStock: yup.number().positive().required()
+    unitPrice: yup.number("Unit price must be a number").positive("Unit price must be a positive number").required("Unit price can't be empty"),
+    unitsInStock: yup.number("Units in stock price must be a number").positive("Units in stock must be a positive number").required("Units in stock can't be empty")
 })
 
 
@@ -26,11 +26,11 @@ export const Form = () => {
         <form onSubmit={handleSubmit(submitForm)}>
             <h1>Add Product</h1>
             <input placeholder='Product name' type="text" name='productName' {...register('productName')}/>
-            <p className='error'>{errors.productName?.message}</p>
+           {errors.productName?.message && <p className='error'>{errors.productName?.message}</p>}
             <input placeholder='Unit price' type="number" name="unitPrice" id="" {...register('unitPrice')}/>
-            <p className='error'>{errors.unitPrice?.message}</p>
+           {errors.unitPrice?.message && <p className='error'>{errors.unitPrice?.message}</p>}
             <input placeholder='Units in stock' type="number" name="unitsInStock" id="" {...register('unitsInStock')}/>
-            <p className='error'>{errors.unitsInStock?.message}</p>
+        {errors.unitsInStock?.message && <p className='error'>{errors.unitsInStock?.message}</p>}
             <input type="submit" value="Submit" />
 
         </form>
